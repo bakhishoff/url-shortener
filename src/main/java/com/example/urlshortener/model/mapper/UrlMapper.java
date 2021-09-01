@@ -12,8 +12,6 @@ import org.mapstruct.ReportingPolicy;
 @Mapper(componentModel = "spring", unmappedSourcePolicy = ReportingPolicy.IGNORE)
 public interface UrlMapper {
 
-    String TABLE = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_";
-
     Url toEntity(UrlDto dto);
 
     @Mapping(target = "path", source = "id")
