@@ -16,6 +16,8 @@ import java.util.Properties;
  */
 public class IdGenerator extends SequenceStyleGenerator {
 
+    String CHAR_TABLE = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_";
+
     @Override
     public Serializable generate(SharedSessionContractImplementor session,
                                  Object object) throws HibernateException {
@@ -23,7 +25,7 @@ public class IdGenerator extends SequenceStyleGenerator {
         Long id = (Long) super.generate(session, object);
         StringBuilder builder = new StringBuilder();
         while (id > 0) {
-            builder.append(TABLE.charAt((int) (id & 63)));
+            builder.append(CHAR_TABLE.charAt((int) (id & 63)));
             id >>= 6;
         }
         return builder.toString();
